@@ -53,7 +53,7 @@ colorScheme = "light" # Default color scheme: auto, light or dark
 
 [article]
   showDate = true
-  dateFormat = "2 January 2006"
+  dateFormat = "2006-01-02"
   showAuthor = true
   showBreadcrumbs = false
   showDraftLabel = true

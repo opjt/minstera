@@ -1,17 +1,21 @@
 {{ define "main" }}
-  {{ if gt .Pages 0 }}
+  {{ if gt (len .Pages) 0 }}
     <section class="mx-auto min-w-0 max-w-2xl flex-grow lg:max-w-3xl">
-      {{ partial "section-header.html" . }}
+      {{ $groupByYear := true }}
       {{ range (.Paginate (.Pages.GroupByDate "2006")).PageGroups }}
-        {{ if $.Params.groupByYear | default ($.Site.Params.list.groupByYear | default true) }}
+        {{ if $groupByYear }}
           <h2 class="mt-12 text-2xl font-bold text-neutral-700 first:mt-8 dark:text-neutral-300">
             {{ .Key }}
           </h2>
-          <hr class="max-w-none border-double border-neutral-400" />
         {{ end }}
-        <div class="divide-y divide-neutral-300 overflow-hidden dark:divide-neutral-600">
+
+        <div class="mt-4 mb-8 border-l-4 border-neutral-400 pl-4 space-y-2">
           {{ range .Pages }}
-            {{ partial "article-link.html" . }}
+            <p class="m-0">
+              <time class="text-neutral-500 dark:text-neutral-400">{{ .Date.Format "2006-01-02" }}</time>
+              <span class="px-2">|</span>
+              <a href="{{ .RelPermalink }}" class="text-neutral-700 dark:text-neutral-300 hover:underline">{{ .Title }}</a>
+            </p>
           {{ end }}
         </div>
       {{ end }}
@@ -20,7 +24,6 @@
     {{ partial "aside.html" . }}
   {{ else }}
     <section class="mx-auto min-w-0 max-w-2xl flex-grow lg:max-w-3xl">
-      {{ partial "section-header.html" . }}
       <section class="prose mt-10 max-w-none dark:prose-invert">
         <p class="border-t py-8">
           <em>{{ i18n "list.no_articles" | emojify }}</em>

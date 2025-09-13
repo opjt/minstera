@@ -19,7 +19,7 @@
       aria-hidden="true"
     ></div>
     <div
-      class="fixed inset-0 flex h-full w-full max-w-xxs flex-col overflow-y-auto bg-neutral-50 pb-12 shadow-xl dark:bg-neutral-800"
+      class="max-w-xxs fixed inset-0 flex h-full w-full flex-col overflow-y-auto bg-neutral-50 pb-12 shadow-xl dark:bg-neutral-800"
       :class="open ? '' : 'hidden'"
       x-show="open"
       x-transition:enter="transition ease-in-out duration-300"
@@ -70,7 +70,7 @@
   </div>
 
   <header class="dark:shadow-dark shadow">
-    <nav class="container mx-auto flex max-w-7xl items-center px-6 leading-12 lg:px-8 xl:px-12" aria-label="Top">
+    <nav class="leading-12 container mx-auto flex max-w-7xl items-center px-6 lg:px-8 xl:px-12" aria-label="Top">
       {{- if .Site.Params.Logo }}
         <a
           class="relative hidden p-2 align-middle lg:block"
@@ -98,9 +98,12 @@
       <div class="mx-2 h-12 flex-grow">
         <div class="relative h-full w-full">
           <div class="absolute max-w-full" :class="up ? 'hidden' : ''" x-show="!up" x-transition.duration.750ms>
-            <span class="overflow-hidden text-ellipsis whitespace-nowrap font-semibold tracking-wider"
-              >{{ .Site.Title }}</span
+            <a
+              href="{{ "/" | relURL }}"
+              class="overflow-hidden text-ellipsis whitespace-nowrap font-semibold tracking-wider"
             >
+              {{ .Site.Title }}
+            </a>
           </div>
           <template x-if="true">
             <div
@@ -123,7 +126,7 @@
           <li
             class="{{ if $.IsMenuCurrent `main` . | or ($.HasMenuCurrent `main` .) | or (eq $.RelPermalink $url) }}
               border-primary-500
-            {{ end }} mr-7 border-b-2 border-transparent text-right hover:border-primary-500"
+            {{ end }} hover:border-primary-500 mr-7 border-b-2 border-transparent text-right"
           >
             <a class="" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
           </li>

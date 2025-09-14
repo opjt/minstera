@@ -126,7 +126,7 @@
           <li
             class="{{ if $.IsMenuCurrent `main` . | or ($.HasMenuCurrent `main` .) | or (eq $.RelPermalink $url) }}
               border-primary-500
-            {{ end }} hover:border-primary-500 mr-7 border-b-2 border-transparent text-right"
+            {{ end }} mr-7 border-b-2 border-transparent text-right hover:border-neutral-500"
           >
             <a class="" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
           </li>

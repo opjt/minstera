@@ -4,7 +4,7 @@
       {{ partial "section-header.html" . }}
       {{ range .Pages.GroupByDate "2006" }}
         {{ if $.Params.groupByYear | default ($.Site.Params.list.groupByYear | default true) }}
-          <h2 class="mt-12 text-2xl font-bold text-neutral-700 first:mt-8 dark:text-neutral-300">
+          <h2 class="mt-10 text-2xl font-bold text-neutral-700 first:mt-8 dark:text-neutral-300">
             {{ .Key }}
           </h2>
         {{ end }}

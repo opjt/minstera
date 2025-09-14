@@ -1,0 +1,9 @@
+
+<div class="divide-y divide-neutral-300 overflow-hidden dark:divide-neutral-600">
+  {{ range  (.Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections)).Pages }}
+    {{ partial "article-link.html" . }}
+  {{ end }}
+</div>
+  {{ partial "pagination.html" . }}
+</div>
+

@@ -32,11 +32,11 @@
   </h3>
   {{ if .Params.showSummary | default (.Site.Params.list.showSummary | default false) }}
     <div class="my-2">
-      {{ if .Description }}
-        {{ .Description | emojify | plainify | htmlUnescape }}
-      {{ else if .Summary }}
+      {{ if .Summary }}
         {{ .Summary | emojify | plainify | htmlUnescape }}
       {{ end }}
+      {{ else if .Description }}
+        {{ .Description | emojify | plainify | htmlUnescape }}
     </div>
   {{ end }}
   <div class="text-sm text-neutral-400 dark:text-neutral-500">

@@ -62,7 +62,7 @@ colorScheme = "light" # Default color scheme: auto, light or dark
   editAppendPath = true
   showHeadingAnchors = true
   showPagination = true
-  showReadingTime = true
+  showReadingTime = false
   # sharingLinks = ["facebook", "twitter", "pinterest", "reddit", "linkedin", "email"]
   showTOC = true
 
